@@ -57,7 +57,7 @@ class Transaction():
     # Marsyl
     def delete(self, itemNum):
         ''' delete a transaction '''
-        return self.runQuery("DELETE FROM transactions WHERE itemNum=?", (itemNum,))
+        return self.runQuery("DELETE FROM transactions WHERE itemNum=?", (itemNum))
 
     # Marsyl
     def update(self, itemNum, field, new_value):
