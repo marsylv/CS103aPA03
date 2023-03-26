@@ -35,10 +35,10 @@ class Transaction():
     def show_categories(self):
         con = sqlite3.connect(self.dbFile)
         cur = con.cursor()
-        cur.execute(query, params)
+        cur.execute("SELECT * FROM transaction LIMIT 0")
         columns = [col[0] for col in cur.description]
         con.close()
-        
+
         return columns
 
 

@@ -1,6 +1,17 @@
 from transaction import Transaction
 import sys
 
+def main():
+    while (True):
+      prompt = input("Enter command:\n")
+      prompt = prompt.trim()
+
+      if prompt == "quit":
+          break
+      
+      process_args(prompt)
+
+
 def print_usage():
     print('''usage:
       quit
@@ -49,3 +60,6 @@ def process_args(arglist):
     else:
         print(arglist,"is not implemented")
         print_usage()
+
+
+main()
