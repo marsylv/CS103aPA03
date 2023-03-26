@@ -27,6 +27,21 @@ class Transaction():
         ''' return all transactions with given category as a list of dicts.'''
         return self.runQuery("SELECT * from transactions WHERE category=?", (category,))
 
+    # Nathan
+    def add_category(self, column, type):
+        return self.runQuery("ALTER TABLE transactions ADD COLUMN {column} {type}")
+
+    # Nathan
+    def show_categories(self):
+        con = sqlite3.connect(self.dbFile)
+        cur = con.cursor()
+        cur.execute(query, params)
+        columns = [col[0] for col in cur.description]
+        con.close()
+        
+        return columns
+
+
     # Marsyl 
     def add(self, transaction):
         ''' create a transaction and add it to the transactions table '''
