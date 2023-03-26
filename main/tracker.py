@@ -42,9 +42,16 @@ def process_args(arglist):
     elif arglist[0]=='add':
         if len(arglist)!=3:
             print_usage()
-        else:
-            todo = {'title':arglist[1],'desc':arglist[2],'completed':0}
-            todolist.add(todo)
+        elif arglist[1] == "category":
+            try:
+                print(transactions.add_category(arglist[2]))
+            except:
+                print("Invalid Category")
+        elif arglist[1] == "transaction":
+            try:
+                print(transactions.add(arglist[2]))
+            except:
+                print("Invalid transaction")
     elif arglist[0]=='complete':
         if len(arglist)!= 2:
             print_usage()
