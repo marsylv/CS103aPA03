@@ -1,6 +1,16 @@
 from transaction import Transaction
 import sys
 
+def main():
+    while (True):
+      prompt = input("Enter command:\n")
+      prompt = prompt.trim()
+
+      process_args(prompt)
+
+      if prompt == "quit":
+          break
+
 def print_usage():
     print('''usage:
       quit
