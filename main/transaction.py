@@ -40,8 +40,14 @@ class Transaction():
         con.close()
 
         return columns
-
-
+    
+    def modify_category(self, old_column, new_column):
+        con = sqlite3.connect(self.dbFile)
+        cur = con.cursor()
+        cur.execute("ALTER TABLE transactions RENAME COLUMN {old_column} TO {new_column}")
+        con.close()
+        return
+    
     # Marsyl 
     def add(self, transaction):
         ''' create a transaction and add it to the transactions table '''
