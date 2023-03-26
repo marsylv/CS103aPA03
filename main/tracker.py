@@ -9,7 +9,7 @@ def main():
       if prompt == "quit":
           break
       
-      process_args(prompt)
+      process_args(prompt.split())
 
 
 def print_usage():
@@ -45,11 +45,16 @@ def process_args(arglist):
         else:
             todo = {'title':arglist[1],'desc':arglist[2],'completed':0}
             todolist.add(todo)
-    elif arglist[0]=='complete':
-        if len(arglist)!= 2:
-            print_usage()
-        else:
-            todolist.setComplete(arglist[1])
+    elif len(arglist) == 4 && arglist[0]=="summarize" && arglist[1]=="transactions" && arglist[2]=="by":
+        if arglist[3] == "date":
+            print(transactions.sumByDate())
+        elif arglist[3] == "month":
+            print(transactions.sumByMonth())
+        elif arglist[3] == "month":
+            print(transactions.sumByYear())
+        elif arglist[3] == "category":
+            print(transactions.selectByCategory())
+    
     elif arglist[0]=='delete':
         if len(arglist)!= 2:
             print_usage()
