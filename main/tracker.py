@@ -6,10 +6,11 @@ def main():
       prompt = input("Enter command:\n")
       prompt = prompt.trim()
 
-      process_args(prompt)
-
       if prompt == "quit":
           break
+      
+      process_args(prompt)
+
 
 def print_usage():
     print('''usage:
