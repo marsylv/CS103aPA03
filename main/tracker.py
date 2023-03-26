@@ -1,5 +1,4 @@
 from transaction import Transaction
-import sys
 
 def main():
     while (True):
