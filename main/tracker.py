@@ -28,16 +28,19 @@ def print_usage():
       ''')
     
 def process_args(arglist):
-    ''' examine args and make appropriate calls to TodoList'''
+    ''' examine args and make appropriate calls to transaction database'''
     transactions = Transaction()
     if arglist==[]:
         print_usage()
     elif arglist[0]=="show":
-        print_todos(todolist.selectActive())
-    elif arglist[0]=="showall":
-        print_todos(todos = todolist.selectAll())
-    elif arglist[0]=="showcomplete":
-        print_todos(todolist.selectCompleted())
+        if len(arglist) != 2:
+            print_usage()
+        elif arglist[1] == "categories":
+            #print call categories
+            pass
+        elif arglist[1] == "transactions":
+            #print call transactions
+            pass
     elif arglist[0]=='add':
         if len(arglist)!=3:
             print_usage()
