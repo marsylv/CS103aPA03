@@ -4,7 +4,7 @@ import sys
 def main():
     while (True):
       prompt = input("Enter command:\n")
-      prompt = prompt.trim()
+      prompt = prompt.strip()
 
       if prompt == "quit":
           break
