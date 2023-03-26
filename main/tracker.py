@@ -56,3 +56,6 @@ def process_args(arglist):
     else:
         print(arglist,"is not implemented")
         print_usage()
+
+
+main()
