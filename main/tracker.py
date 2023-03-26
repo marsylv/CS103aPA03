@@ -36,11 +36,9 @@ def process_args(arglist):
         if len(arglist) != 2:
             print_usage()
         elif arglist[1] == "categories":
-            #print call categories
-            pass
+            print(transactions.show_categories())
         elif arglist[1] == "transactions":
-            #print call transactions
-            pass
+            print(transactions.selectAll())
     elif arglist[0]=='add':
         if len(arglist)!=3:
             print_usage()
