@@ -22,16 +22,16 @@ class Transaction():
     # Marsyl
     def select_all(self):
         ''' return all transactions as a list of dicts.'''
-        return self.run_query("SELECT * from transactions",())
+        return self.runQuery("SELECT * from transactions")
 
     # Marsyl
     def select_by_category(self, category):
         ''' return all transactions with given category as a list of dicts.'''
-        return self.run_query("SELECT * from transactions WHERE category=?", (category,))
+        return self.runQuery(f"SELECT * from transactions WHERE category={category}")
 
     # Nathan
     def add_category(self, column, type):
-        return self.run_query("ALTER TABLE transactions ADD COLUMN {column} {type}")
+        return self.runQuery(f"ALTER TABLE transactions ADD COLUMN {column} {type}")
 
     # Nathan
     def show_categories(self):
@@ -46,7 +46,7 @@ class Transaction():
     def modify_category(self, old_column, new_column):
         con = sqlite3.connect(self.dbFile)
         cur = con.cursor()
-        cur.execute("ALTER TABLE transactions RENAME COLUMN {old_column} TO {new_column}")
+        cur.execute(f"ALTER TABLE transactions RENAME COLUMN {old_column} TO {new_column}")
         con.close()
         return
     
@@ -59,26 +59,26 @@ class Transaction():
     # Marsyl
     def delete(self, item_num):
         ''' delete a transaction '''
-        return self.run_query("DELETE FROM transactions WHERE item_num=?",  item_num,)
+        return self.runQuery(f"DELETE FROM transactions WHERE itemNum={itemNum}")
 
     # Marsyl
     def update(self, item_num, field, new_value):
        # ''' update a transaction's field '''
-        return self.run_query(f"UPDATE transactions SET {field}=? WHERE item_num=?", (new_value, item_num))
+        return self.runQuery(f"UPDATE transactions SET {field}={new_value} WHERE itemNum={itemNum}")
 
     # Marsyl
     def sum_by_date(self):
         #''' return sum of all transactions grouped by date '''
-        return self.run_query("SELECT date, SUM(amount) FROM transactions GROUP BY date",())
+        return self.runQuery("SELECT date, SUM(amount) FROM transactions GROUP BY date")
 
     # Marsyl
     def sum_by_month(self):
         ''' return sum of all transactions grouped by month '''
-        return self.run_query("SELECT strftime('%Y-%m',date) as month, SUM(amount) FROM transactions GROUP BY month",())
+        return self.runQuery("SELECT strftime('%Y-%m',date) as month, SUM(amount) FROM transactions GROUP BY month")
      # Marsyl
     def sum_by_year(self):
         #''' return sum of all transactions grouped by year '''
-        return self.run_query("SELECT strftime('%Y',date) as year, SUM(amount) FROM transactions GROUP BY year",())
+        return self.runQuery("SELECT strftime('%Y',date) as year, SUM(amount) FROM transactions GROUP BY year")
 
     # Marsyl
     def run_query(self, query):
