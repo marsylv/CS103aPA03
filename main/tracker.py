@@ -65,12 +65,10 @@ def process_args(arglist):
             print(transactions.selectByCategory())
     
     elif arglist[0]=='delete':
-        if len(arglist)!= 3:
+        if len(arglist)!= 2:
             print_usage()
-        elif arglist[2] == "transaction":
-            transactions.delete(arglist[2])
         else:
-            print_usage()
+            todolist.delete(arglist[1])
     else:
         print(arglist," is not implemented.")
         print_usage()

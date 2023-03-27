@@ -18,7 +18,6 @@ class Transaction():
                            category text,
                            date text,
                            description text)''')
-        print("RAN SUCCESSFULLY")
 
     # Marsyl
     def selectAll(self):
@@ -60,7 +59,7 @@ class Transaction():
     # Marsyl
     def delete(self, itemNum):
         ''' delete a transaction '''
-        return self.runQuery("DELETE FROM transactions WHERE itemNum=?", (itemNum))
+        return self.runQuery("DELETE FROM transactions WHERE itemNum=?", (itemNum,))
 
     # Marsyl
     def update(self, itemNum, field, new_value):
