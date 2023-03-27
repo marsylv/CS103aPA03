@@ -1,4 +1,4 @@
-from main.tracker import main
+import tracker
 import pytest
 
 def test_exit(monkeypatch, capsys):
