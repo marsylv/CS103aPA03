@@ -16,6 +16,7 @@ class Transaction():
                            category text,
                            date text,
                            description text)''')
+        print("RAN SUCCESSFULLY")
 
     # Marsyl
     def selectAll(self):
