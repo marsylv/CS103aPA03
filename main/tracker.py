@@ -1,4 +1,5 @@
 from transaction import Transaction
+import sys
 
 def main():
     while (True):
@@ -10,7 +11,7 @@ def main():
       
       process_args(prompt.split())
 
-
+# Alex
 def print_usage():
     print('''usage:
       quit
@@ -25,10 +26,11 @@ def print_usage():
       summarize transactions by year
       summarize transactions by category
       ''')
-    
+
+# Alex
 def process_args(arglist):
     ''' examine args and make appropriate calls to transaction database'''
-    transactions = Transaction("transactions.db")
+    transactions = Transaction()
     if arglist==[]:
         print_usage()
     elif arglist[0]=="show":
@@ -70,8 +72,6 @@ def process_args(arglist):
         else:
             print_usage()
     else:
-        print(arglist,"is not implemented")
+        print(arglist," is not implemented.")
         print_usage()
-
-
 main()

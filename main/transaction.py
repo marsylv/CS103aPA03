@@ -1,15 +1,17 @@
 import sqlite3
 
+
 # Marsyl
 def toDict(t):
     ''' t is a tuple (itemNum, amount, category, date, description)'''
     transaction = {'itemNum': t[0], 'amount': t[1], 'category': t[2], 'date': t[3], 'description': t[4]}
     return transaction
 
+dbFile = ""
 class Transaction():
     # Marsyl
-    def __init__(self, dbFile):
-        self.dbFile = dbFile
+    def __init__(self):
+        self.dbFile = "transactions"
         self.runQuery('''CREATE TABLE IF NOT EXISTS transactions
                           (itemNum integer primary key autoincrement,
                            amount real,
@@ -62,12 +64,12 @@ class Transaction():
 
     # Marsyl
     def update(self, itemNum, field, new_value):
-        ''' update a transaction's field '''
+       # ''' update a transaction's field '''
         return self.runQuery(f"UPDATE transactions SET {field}=? WHERE itemNum=?", (new_value, itemNum))
 
     # Marsyl
     def sumByDate(self):
-        ''' return sum of all transactions grouped by date '''
+        #''' return sum of all transactions grouped by date '''
         return self.runQuery("SELECT date, SUM(amount) FROM transactions GROUP BY date",())
 
     # Marsyl
@@ -76,15 +78,15 @@ class Transaction():
         return self.runQuery("SELECT strftime('%Y-%m',date) as month, SUM(amount) FROM transactions GROUP BY month",())
      # Marsyl
     def sumByYear(self):
-        ''' return sum of all transactions grouped by year '''
+        #''' return sum of all transactions grouped by year '''
         return self.runQuery("SELECT strftime('%Y',date) as year, SUM(amount) FROM transactions GROUP BY year",())
 
     # Marsyl
-    def runQuery(self, query, params):
-        ''' execute a SQL query and return the result as a list of dicts.'''
-        con = sqlite3.connect(self.dbFile)
+    def runQuery(self, query):
+        #''' execute a SQL query and return the result as a list of dicts.'''
+        con = sqlite3.connect(dbFile)
         cur = con.cursor()
-        cur.execute(query, params)
+        cur.execute(query)
         rows = cur.fetchall()
         con.commit()
         con.close()
