@@ -7,7 +7,9 @@ def toDict(t):
     return transaction
 
 class Transaction():
-    # Marsyl
+    # Marsy
+    dbFile = "../data/tracker.db"
+
     def __init__(self, dbFile):
         self.dbFile = dbFile
         self.runQuery('''CREATE TABLE IF NOT EXISTS transactions
