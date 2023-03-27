@@ -63,12 +63,12 @@ class Transaction():
 
     # Marsyl
     def update(self, item_num, field, new_value):
-       # ''' update a transaction's field '''
+        ''' update a transaction's field '''
         return self.runQuery(f"UPDATE transactions SET {field}={new_value} WHERE itemNum={itemNum}")
 
     # Marsyl
     def sum_by_date(self):
-        #''' return sum of all transactions grouped by date '''
+        ''' return sum of all transactions grouped by date '''
         return self.runQuery("SELECT date, SUM(amount) FROM transactions GROUP BY date")
 
     # Marsyl
@@ -77,12 +77,12 @@ class Transaction():
         return self.runQuery("SELECT strftime('%Y-%m',date) as month, SUM(amount) FROM transactions GROUP BY month")
      # Marsyl
     def sum_by_year(self):
-        #''' return sum of all transactions grouped by year '''
+        ''' return sum of all transactions grouped by year '''
         return self.runQuery("SELECT strftime('%Y',date) as year, SUM(amount) FROM transactions GROUP BY year")
 
     # Marsyl
     def run_query(self, query):
-        #''' execute a SQL query and return the result as a list of dicts.'''
+        ''' execute a SQL query and return the result as a list of dicts.'''
         con = sqlite3.connect(self.db_file)
         cur = con.cursor()
         cur.execute(query)
