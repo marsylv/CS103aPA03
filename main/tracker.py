@@ -71,6 +71,6 @@ def process_args(arglist):
             if arglist[1] == "transaction":
                 transactions.delete(arglist[2])
             
-        print(arglist," is not implemented.")
-        print_usage()
+    print(arglist," is not implemented.")
+    print_usage()
 main()
