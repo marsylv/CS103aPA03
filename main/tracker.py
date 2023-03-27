@@ -7,6 +7,7 @@ def main():
       prompt = prompt.strip()
 
       if prompt == "quit":
+          print("Exiting the program now!")
           break
       
       process_args(prompt.split())
